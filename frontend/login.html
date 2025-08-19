@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 360px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    #passwordDisplay {
+      height: 30px;
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+      font-size: 18px;
+      border-bottom: 2px solid #007bff;
+      text-align: center;
+      color: transparent; /* hide characters */
+      text-shadow: 0 0 0 black; /* shows as dots */
+    }
+
+    .num-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 60px);
+      grid-gap: 10px;
+      justify-content: center;
+    }
+
+    .num-btn {
+      padding: 15px 0;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .num-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .delete-btn {
+      background-color: #007bff;
+    }
+
+    .delete-btn:hover {
+      background-color: #007bff;
+    }
+
+    .check-btn {
+      background-color: #007bff;
+    }
+
+    .check-btn:hover {
+      background-color: #007bff;
+    }
+
+    .error {
+      color: rgb(13, 74, 242);
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    
+    
+
+    <div class="num-grid" id="numGrid"></div>
+
+    
+  </div>
+
+  <script>
+    const correctPassword = "91981";
+    let enteredPassword = "";
+
+    const passwordDisplay = document.getElementById("passwordDisplay");
+    const errorMsg = document.getElementById("errorMsg");
+    const numGrid = document.getElementById("numGrid");
+
+    // Create buttons 1-18
+    for (let i = 1; i <= 18; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      btn.className = "num-btn";
+      btn.onclick = () => addNumber(i);
+      numGrid.appendChild(btn);
+    }
+
+    // Button 19 = Delete
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "19";
+    delBtn.className = "num-btn delete-btn";
+    delBtn.onclick = deleteNumber;
+    numGrid.appendChild(delBtn);
+
+    // Button 20 = Check/Enter
+    const checkBtn = document.createElement("button");
+    checkBtn.textContent = "20";
+    checkBtn.className = "num-btn check-btn";
+    checkBtn.onclick = checkPassword;
+    numGrid.appendChild(checkBtn);
+
+    function addNumber(num) {
+      enteredPassword += num;
+      updateDisplay();
+      errorMsg.style.display = "none";
+    }
+
+    function deleteNumber() {
+      enteredPassword = "";
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      passwordDisplay.textContent = "*".repeat(enteredPassword.length);
+    }
+
+    function checkPassword() {
+        if (!enteredPassword) {
+    // No input entered
+    errorMsg.textContent = "Please enter a password!";
+    errorMsg.style.display = "block";
+    return;
+  }
+      if (enteredPassword === correctPassword) {
+        window.location.href = "/static/index.html";
+        enteredPassword = "";
+      } else {
+        enteredPassword = "";
+        updateDisplay();
+        errorMsg.style.display = "block";
+      }
+    }
+
+
+
+
+  </script>
+</body>
+</html>
