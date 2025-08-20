@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000"; // FastAPI backend
+const API_URL = "https://popo-1.onrender.com"; // FastAPI backend
 
 // Fetch and display videos
 async function loadVideos() {
