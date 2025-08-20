@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
   background: #f4f6f9;
@@ -5,35 +6,45 @@ body {
   padding: 0;
 }
 
+/* Container with padding */
 .container {
-  width: 80%;
+  width: 95%;
+  max-width: 480px; /* mobile-friendly max width */
   margin: auto;
-  padding: 20px;
+  padding: 15px;
 }
 
+/* Page title */
 h1 {
   text-align: center;
   color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
+/* Form styles */
 .form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .form input {
-  width: 60%;
-  padding: 10px;
-  font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 .form button {
-  padding: 10px 15px;
-  font-size: 16px;
+  padding: 12px;
+  font-size: 18px;
   background: #007bff;
   color: white;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -41,56 +52,88 @@ h1 {
   background: #0056b3;
 }
 
+/* Video list grid */
 .video-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 15px;
 }
 
+/* Video card */
 .video-card {
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 12px;
   text-align: center;
 }
 
+/* Video thumbnail */
 .video-card img {
-  max-width: 100%;
-  border-radius: 5px;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
+/* Video title */
 .video-card h3 {
-  font-size: 16px;
+  font-size: 18px;
   margin: 10px 0;
+  color: #333;
 }
 
+/* Buttons inside card */
+.video-card a,
 .delete-btn {
-  background: red;
+  display: inline-block;
+  width: 48%;
+  margin: 5px 1%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
   color: white;
-  border: none;
-  padding: 6px 12px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 .video-card a {
-  background: red;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.video-card a {
-    background-color: #007bff; /* Blue */
+  background-color: #007bff;
 }
 
 .video-card a:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #ff4d4f;
 }
 
 .delete-btn:hover {
-  background: darkred;
+  background-color: #cc0000;
 }
+
+/* Make videos list scrollable on small screens */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+  }
+  
+  .form input, .form button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .video-card h3 {
+    font-size: 16px;
+  }
+
+  .video-card a,
+  .delete-btn {
+    font-size: 14px;
+    padding: 8px;
+    width: 100%; /* full width buttons on small screens */
+    margin: 5px 0;
+  }
+}
+
